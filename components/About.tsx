@@ -35,8 +35,8 @@ const AboutMe: React.FC = () => {
               >
                 Download CV
               </a>
-              <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                See Projects <span aria-hidden="true">→</span>
+              <a href="/about" className="text-sm font-semibold leading-6 text-gray-900">
+                Read More <span aria-hidden="true">→</span>
               </a>
             </div>
            

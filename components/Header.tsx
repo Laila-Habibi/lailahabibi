@@ -1,59 +1,171 @@
 'use client'
-import React, { useState } from 'react';
+import { Fragment, useState } from 'react'
+import {
+  Dialog,
+  DialogPanel,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Popover,
+  PopoverButton,
+  PopoverGroup,
+  PopoverPanel,
+  Transition,
+} from '@headlessui/react'
+import {
+  ArrowPathIcon,
+  Bars3Icon,
+  ChartPieIcon,
+  CursorArrowRaysIcon,
+  FingerPrintIcon,
+  SquaresPlusIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline'
+import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const products = [
+  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
+  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
+  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
+  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
+  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+]
+const callsToAction = [
+  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
+  { name: 'Contact sales', href: '#', icon: PhoneIcon },
+]
+// @ts-ignore
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="bg-gray-900 text-white">
-      <div className="container mx-auto flex justify-between items-center py-4">
-        <a href="/" className="text-xl font-bold">
-          Laila Habibi
-        </a>
-        <div className="md:hidden">
+    <header className="bg-white">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div className="flex lg:flex-1">
+          <a href="/" className="-m-1.5 p-1.5">
+          
+            <h1 className='font-bold text-xl flex flex-col justify-center'>Laila Habibi</h1>
+          </a>
+        </div>
+        <div className="flex lg:hidden">
           <button
-            className="focus:outline-none"
-            onClick={toggleMenu}
+            type="button"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            onClick={() => setMobileMenuOpen(true)}
           >
-            <svg
-              className={`w-6 h-6 transition-transform duration-300 ${
-                isOpen ? 'transform rotate-90' : ''
-              }`}
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <span className="sr-only">Open main menu</span>
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-         
         </div>
-        <div
-          className={`md:flex md:items-center space-y-4 md:space-y-0 md:space-x-6 ${
-            isOpen ? 'block' : 'hidden'
-          }`}
-        >
-          <a href="/about" className="hover:text-gray-400 transition-colors duration-300">
-            About
+        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+        
+          
+          <a href="/about" className="text-sm font-semibold leading-6 text-gray-900">
+                About me
+              </a>
+          <a href="/education" className="text-sm font-semibold leading-6 text-gray-900">
+               Education
           </a>
-          <a href="/projects" className="hover:text-gray-400 transition-colors duration-300">
-            Projects
+          <a href="courses" className="text-sm font-semibold leading-6 text-gray-900">
+              Courses
           </a>
-          <a href="/contact" className="hover:text-gray-400 transition-colors duration-300">
-            Contact
+          <a href="/work" className="text-sm font-semibold leading-6 text-gray-900">
+              Work Experience
           </a>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-export default Navbar;
+          <a href="skills" className="text-sm font-semibold leading-6 text-gray-900">
+              Skills
+          </a>
+          <a href="/projectss" className="text-sm font-semibold leading-6 text-gray-900">
+              Projects
+          </a>
+          <a href="/hobbies" className="text-sm font-semibold leading-6 text-gray-900">
+              Hobbies
+          </a>
+          <a href="/contact" className="text-sm font-semibold leading-6 text-gray-900">
+              Contact
+          </a>
+        </PopoverGroup>
+       
+      </nav>
+      <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+        <div className="fixed inset-0 z-10" />
+        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="flex items-center justify-between">
+            <a href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only font-bold text-xl flex flex-col justify-center">Laila Habibi</span>
+             
+            </a>
+            <button
+              type="button"
+              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="mt-6 flow-root">
+            <div className="-my-6 divide-y divide-gray-500/10">
+              <div className="space-y-2 py-6">
+              
+                <a
+                  href="/about"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  About me
+                </a>
+                <a
+                  href="/education"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Education
+                </a>
+                <a
+                  href="courses"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Courses
+                </a>
+                <a
+                  href="/work"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Work Experience
+                </a>
+                <a
+                  href="skills"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Skills
+                </a>
+                <a
+                  href="projectss"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Projects
+                </a>
+                <a
+                  href="/hobbies"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Hobbies
+                </a>
+                <a
+                  href="contact"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Contact
+                </a>
+              </div>
+             
+            </div>
+          </div>
+        </DialogPanel>
+      </Dialog>
+    </header>
+  )
+}
