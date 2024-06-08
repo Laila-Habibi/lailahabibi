@@ -3,14 +3,7 @@ import { Fragment, useState } from 'react'
 import {
   Dialog,
   DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Popover,
-  PopoverButton,
   PopoverGroup,
-  PopoverPanel,
-  Transition,
 } from '@headlessui/react'
 import {
   ArrowPathIcon,
@@ -64,28 +57,28 @@ export default function Header() {
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
         
           
-          <a href="/about" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/about" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:text-indigo-600 transition-transform duration-300 hover:translate-y-[-20%]">
                 About me
               </a>
-          <a href="/education" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/education" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:text-indigo-600 transition-transform duration-300 hover:translate-y-[-20%]">
                Education
           </a>
-          <a href="courses" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="courses" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:text-indigo-600 transition-transform duration-300 hover:translate-y-[-20%]">
               Courses
           </a>
-          <a href="/work" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/work" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:text-indigo-600 transition-transform duration-300 hover:translate-y-[-20%]">
               Work Experience
           </a>
-          <a href="skills" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="skills" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:text-indigo-600 transition-transform duration-300 hover:translate-y-[-20%]">
               Skills
           </a>
-          <a href="/projectss" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/projectss" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:text-indigo-600 transition-transform duration-300 hover:translate-y-[-20%]">
               Projects
           </a>
-          <a href="/hobbies" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/hobbies" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:text-indigo-600 transition-transform duration-300 hover:translate-y-[-20%]">
               Hobbies
           </a>
-          <a href="/contact" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/contact" className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:text-indigo-600 transition-transform duration-300 hover:translate-y-[-20%]">
               Contact
           </a>
         </PopoverGroup>
